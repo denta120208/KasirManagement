@@ -108,7 +108,15 @@ class TransactionController extends Controller
     public function destroy($id)
     {
         if (auth()->user()->hasRole('pemilik')) abort(403);
-        //
+        $trx = Transaction::findOrFail($id);
+        // Hapus detail transaksi jika ada
+        if (method_exists($trx, 'details')) {
+            $trx->details()->delete();
+        } else {
+            \App\Models\TransactionDetail::where('transaction_id', $trx->id)->delete();
+        }
+        $trx->delete();
+        return redirect()->route('transactions.index')->with('success', 'Transaksi berhasil dihapus!');
     }
 
     /**

@@ -26,7 +26,7 @@ class StockController extends Controller
      */
     public function create()
     {
-        //
+        return view('stocks.create');
     }
 
     /**
@@ -37,7 +37,14 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'quantity' => 'required|integer',
+            'unit' => 'required',
+            'min_stock' => 'required|integer',
+        ]);
+        \App\Models\Stock::create($request->only(['name','quantity','unit','min_stock']));
+        return redirect()->route('stocks.index')->with('success', 'Stok berhasil ditambahkan!');
     }
 
     /**
@@ -82,7 +89,9 @@ class StockController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $stock = \App\Models\Stock::findOrFail($id);
+        $stock->delete();
+        return redirect()->route('stocks.index')->with('success', 'Stok berhasil dihapus!');
     }
 
     /**
@@ -93,6 +102,9 @@ class StockController extends Controller
     public function exportExcel()
     {
         $stocks = \App\Models\Stock::all();
-        return Excel::download(new GenericExport('stocks.excel', ['stocks' => $stocks]), 'stocks.xlsx');
+        return Excel::download(
+            new GenericExport('stocks.excel', ['stocks' => $stocks]),
+            'stocks.xlsx'
+        );
     }
 }

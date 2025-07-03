@@ -18,6 +18,11 @@ class GenericExport implements FromView
 
     public function view(): View
     {
+        // Set header agar tidak error saat dibuka di Excel
+        \Illuminate\Support\Facades\Response::macro('excel', function ($content) {
+            return response($content)
+                ->header('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+        });
         return view($this->view, $this->data);
     }
 }

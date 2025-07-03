@@ -1,7 +1,4 @@
-@extends('layouts.modern')
-@section('title', 'Export Data User')
-@section('content')
-<table class="table table-bordered">
+<table>
     <thead>
         <tr>
             <th>No</th>
@@ -21,4 +18,3 @@
         @endforeach
     </tbody>
 </table>
-@endsection

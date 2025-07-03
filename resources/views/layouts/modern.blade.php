@@ -7,13 +7,91 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Nunito', sans-serif; background: #f8fafc; }
-        .navbar { box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-        .card { border-radius: 1rem; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
-        .table thead { background: #f1f3f6; }
-        .btn-primary { background: #3b82f6; border: none; }
-        .btn-primary:hover { background: #2563eb; }
-        .form-control:focus { border-color: #3b82f6; box-shadow: 0 0 0 0.2rem rgba(59,130,246,.25); }
+        body {
+            font-family: 'Nunito', sans-serif;
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+            min-height: 100vh;
+        }
+        .navbar {
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+            background: linear-gradient(90deg, #3b82f6 0%, #6366f1 100%) !important;
+        }
+        .navbar-brand {
+            color: #fff !important;
+            letter-spacing: 2px;
+            font-size: 1.5rem;
+        }
+        .navbar-nav .nav-link {
+            color: #e0e7ff !important;
+            font-weight: 600;
+            margin-right: 0.5rem;
+            transition: color 0.2s;
+        }
+        .navbar-nav .nav-link.active, .navbar-nav .nav-link:hover {
+            color: #fbbf24 !important;
+        }
+        .container {
+            max-width: 100% !important;
+            padding-left: 2vw;
+            padding-right: 2vw;
+        }
+        .card, .table, .alert, .form-control, .dropdown-menu {
+            box-shadow: 0 4px 24px rgba(59,130,246,0.10), 0 1.5px 6px rgba(99,102,241,0.08);
+        }
+        .card {
+            background: linear-gradient(135deg, #fff 80%, #e0e7ff 100%);
+            border-radius: 1.5rem;
+            padding: 2rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .table {
+            background: #fff;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+        .table thead {
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+        }
+        .table td, .table th {
+            vertical-align: middle;
+        }
+        .form-control {
+            border-radius: 0.75rem;
+            background: #f1f5f9;
+        }
+        .dropdown-menu {
+            min-width: 180px;
+        }
+        .btn, .form-control {
+            box-shadow: 0 2px 8px rgba(99,102,241,0.07);
+        }
+        .btn {
+            border-radius: 0.75rem;
+            padding: 0.5rem 1.25rem;
+        }
+        .alert {
+            border-radius: 0.75rem;
+            font-size: 1.05rem;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 0.5rem;
+                padding-right: 0.5rem;
+            }
+            .card {
+                padding: 1rem 0.5rem;
+            }
+        }
+        h2, h1 {
+            color: #3b82f6;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+        .dropdown-item:hover {
+            background: #6366f1;
+            color: #fff;
+        }
     </style>
     @stack('head')
 </head>

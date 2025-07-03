@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('categories', CategoryController::class)->middleware('role:admin');
     Route::resource('menus', MenuController::class)->middleware('role:admin');
     Route::resource('tables', TableController::class)->middleware('role:admin');
-    Route::resource('stocks', StockController::class)->middleware('role:admin');
+    Route::resource('stocks', StockController::class)->middleware('role:admin|kasir');
     Route::resource('users', UserController::class)->middleware('role:admin');
     // Pengeluaran
     Route::resource('expenses', ExpenseController::class)->middleware('role:admin|kasir|pemilik');
@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('menus-export-excel', [MenuController::class, 'exportExcel'])->name('menus.exportExcel')->middleware('role:admin|kasir|pemilik');
     Route::get('categories-export-excel', [CategoryController::class, 'exportExcel'])->name('categories.exportExcel')->middleware('role:admin|kasir|pemilik');
     Route::get('tables-export-excel', [TableController::class, 'exportExcel'])->name('tables.exportExcel')->middleware('role:admin|kasir|pemilik');
+    Route::get('stocks-export-excel', [StockController::class, 'exportExcel'])->name('stocks.exportExcel')->middleware('role:admin|kasir|pemilik');
 });
 
 require __DIR__.'/auth.php';
